@@ -7,21 +7,22 @@ import { openDB } from 'idb';
 import Cropper  from 'react-cropper';
 import * as tf from '@tensorflow/tfjs';
 import LoadButton from '../components/LoadButton';
-//import { MODEL_CLASSES } from '../model/classes';
-import { MODEL_CLASSES } from '../model/kyc_classes';
+import { MODEL_CLASSES } from '../model/classes';
+//import { MODEL_CLASSES } from '../model/kyc_classes';
 import config from '../config';
 import './Classify.css';
 import 'cropperjs/dist/cropper.css';
 import kycimage from './kyc.js';
+import tensorAsBase64 from 'tensor-as-base64';
 //import cv from "@techstark/opencv-js";
 //import openCV from 'react-opencvjs';
 //import Base64Binary from './base64binary.js';
 
 
 //const MODEL_PATH = '/model/model.json';
-const MODEL_PATH = '/kyc_model/model.json';
-const IMAGE_SIZE = 224;
-const CANVAS_SIZE = 224;
+const MODEL_PATH = '/kyc_ocr/model/model.json';
+const IMAGE_SIZE = 600;
+const CANVAS_SIZE = 600;
 const TOPK_PREDICTIONS = 5;
 
 const INDEXEDDB_DB = 'tensorflowjs';
@@ -255,13 +256,18 @@ export default class Classify extends Component {
     this.setState({ isClassifying: true });
 
     const imageCapture = await this.webcam.capture();
-    console.log(imageCapture.print())
+    console.log(await tensorAsBase64(imageCapture));
+    let imagebuffer = await tensorAsBase64(imageCapture);
+   // const imagebuffer = imageCapture.toDataURL()
+   // console.log(imagebuffer)
+    let probabilities = await kycimage(imagebuffer,this.model);
+    //console.log(probabilities)
     //console.log(imageCapture.array().then(array => console.log(array.print())));
 
-    const resized = tf.image.resizeBilinear(imageCapture, [IMAGE_SIZE, IMAGE_SIZE]);
-    const imageData = await this.processImage(resized);
-    const logits = this.model.predict(imageData);
-    const probabilities = await logits.data();
+    //const resized = tf.image.resizeBilinear(imageCapture, [IMAGE_SIZE, IMAGE_SIZE]);
+    //const imageData = await this.processImage(resized);
+    //const logits = this.model.predict(imageData);
+    //const probabilities = await logits.data();
     const preds = await this.getTopKClasses(probabilities, TOPK_PREDICTIONS);
 
     this.setState({
@@ -276,9 +282,9 @@ export default class Classify extends Component {
 
     // Dispose of tensors we are finished with.
     imageCapture.dispose();
-    logits.dispose();
+    //logits.dispose();
     tensorData.dispose();
-    imageData.dispose();
+    //imageData.dispose();
   }
 
   processImage = async (image) => {
@@ -421,7 +427,7 @@ export default class Classify extends Component {
                 <div className="webcam-box-outer">
                   <div className="webcam-box-inner">
                     <video ref="webcam" autoPlay playsInline muted id="webcam"
-                           width="448" height="448">
+                           width="600" height="600">
                     </video>
                   </div>
                 </div>
