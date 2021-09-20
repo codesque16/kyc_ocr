@@ -1,0 +1,74 @@
+{
+  "name": "tfjs-web-app",
+  "version": "0.1.0",
+  "private": true,
+  "license": "Apache-2.0",
+  "plugins": {
+    "@babel/plugin-proposal-class-properties": "^7.0.0"
+  },
+  "dependencies": {
+    "@babel/plugin-transform-react-jsx": "^7.14.9",
+    "@techstark/opencv-js": "^4.5.3-release.3",
+    "@tensorflow/tfjs": "^1.2.7",
+    "@tensorflow/tfjs-node": "1.2.8",
+    "babel-preset-es2015": "^6.24.1",
+    "based-blob": "^1.0.1",
+    "bootstrap": "^4.3.1",
+    "buffer-image": "^1.0.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "fast-png": "^5.0.4",
+    "idb": "^4.0.3",
+    "image-encode": "^1.3.1",
+    "jimp": "^0.16.1",
+    "opencv-wasm": "^4.3.0-10",
+    "patch-package": "^6.4.7",
+    "postinstall-postinstall": "^2.1.0",
+    "react": "^16.8.6",
+    "image-js": "^0.21.0",
+    "react-bootstrap": "^1.0.0-beta.8",
+    "react-cropper": "^1.2.0",
+    "react-dom": "^16.8.6",
+    "react-icons": "^3.7.0",
+    "react-image": "^4.0.3",
+    "react-opencvjs": "^1.0.2",
+    "react-router-bootstrap": "^0.25.0",
+    "react-router-dom": "^5.0.0",
+    "react-scripts": "3.0.1",
+    "tesseract.js": "^2.1.5",
+    "webpack-config": "^7.5.0"
+  },
+  "_comments": {
+    "vshushkov-imagejs": "^0.0.11",
+    "image-js": "file:/Users/ppuser/projects/image-js"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "start-dev": "concurrently --kill-others-on-fail \"node server.js\" \"yarn start\"",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "start-prod": "node server.js",
+    "lint": "eslint ./src"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.0.0",
+    "concurrently": "^4.1.0",
+    "typescript": "^4.4.3"
+  }
+}
