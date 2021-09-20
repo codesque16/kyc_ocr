@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/codesque16/kyc_ocr/static/css/main.8e6300ec.chunk.css",
+    "main.js": "/codesque16/kyc_ocr/static/js/main.8db4aeb1.chunk.js",
+    "main.js.map": "/codesque16/kyc_ocr/static/js/main.8db4aeb1.chunk.js.map",
+    "runtime~main.js": "/codesque16/kyc_ocr/static/js/runtime~main.65434eb6.js",
+    "runtime~main.js.map": "/codesque16/kyc_ocr/static/js/runtime~main.65434eb6.js.map",
+    "static/css/2.b4c9628e.chunk.css": "/codesque16/kyc_ocr/static/css/2.b4c9628e.chunk.css",
+    "static/js/2.c2713058.chunk.js": "/codesque16/kyc_ocr/static/js/2.c2713058.chunk.js",
+    "static/js/2.c2713058.chunk.js.map": "/codesque16/kyc_ocr/static/js/2.c2713058.chunk.js.map",
+    "index.html": "/codesque16/kyc_ocr/index.html",
+    "precache-manifest.49f05221f2f2e04012c38ccf39be85bc.js": "/codesque16/kyc_ocr/precache-manifest.49f05221f2f2e04012c38ccf39be85bc.js",
+    "service-worker.js": "/codesque16/kyc_ocr/service-worker.js",
+    "static/css/2.b4c9628e.chunk.css.map": "/codesque16/kyc_ocr/static/css/2.b4c9628e.chunk.css.map",
+    "static/css/main.8e6300ec.chunk.css.map": "/codesque16/kyc_ocr/static/css/main.8e6300ec.chunk.css.map"
+  }
+}
