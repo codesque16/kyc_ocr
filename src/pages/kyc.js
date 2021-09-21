@@ -12,7 +12,7 @@ const { Image } = require('image-js');
 //  langPath: path.join(__dirname, 'public', 'tesseract_data'),
 //  logger: m => console.log(m),
 //});
-
+const MODEL_INPUT_SIZE = 200;
 function preprocessImage(img,w,h) {
     let img_w=img.cols
     let img_h=img.rows
@@ -45,7 +45,7 @@ async function classifyDocument(preprocessed_img,model) {
   //var predicted="NO_OUTPUT";
   //let model = await tf.loadLayersModel('file://public/kyc_model/model.json');
   console.log(await tf.tensor(preprocessed_img.data).div(tf.scalar(255.0)).array())
-  let scores = await model.predict([tf.tensor(preprocessed_img.data).div(tf.scalar(255.0)).reshape([1, 80, 80, 1])]);
+  let scores = await model.predict([tf.tensor(preprocessed_img.data).div(tf.scalar(255.0)).reshape([1, MODEL_INPUT_SIZE, MODEL_INPUT_SIZE, 1])]);
   //console.log(await scores.data())
   let score_array= await scores.array()
   //let predicted=score_array[0].indexOf(Math.max(...score_array));
@@ -77,7 +77,7 @@ function getBlackHatImage(imageMat) {
   console.log(imageMat)
   let dst = new window.cv.Mat();
   console.log(dst)
-  let M = window.cv.Mat.ones(9,9, window.cv.CV_8U);
+  let M = window.cv.Mat.ones(25,7, window.cv.CV_8U);
   console.log(M)
   window.cv.morphologyEx(imageMat, dst, window.cv.MORPH_BLACKHAT, M);
   window.cv.cvtColor(dst, dst, window.cv.COLOR_GRAY2RGBA);
@@ -146,7 +146,7 @@ const kycimage = async function(buffer,model) {
 
     window.cv.cvtColor(dst, dst, window.cv.COLOR_RGBA2GRAY);
     console.log(dst);
-    let pImage= preprocessImage(dst,80,80);
+    let pImage= preprocessImage(dst,MODEL_INPUT_SIZE,MODEL_INPUT_SIZE);
     console.log(pImage);
     window.cv.cvtColor(pImage, pImage, window.cv.COLOR_GRAY2RGBA);
     /*new Jimp({ data: pImage.data, width: pImage.cols, height: pImage.rows }, (err, image) => {

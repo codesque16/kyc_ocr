@@ -5,7 +5,15 @@
 export const MODEL_CLASSES = {
     0: 'AADHAAR',
     1: 'DRIVING LICENSE',
-    2: 'PAN',
-    3: 'PASSPORT',
-    4: 'VOTER ID',
+    2: 'NOT A DOCUMENT',
+    3: 'PAN',
+    4: 'PASSPORT',
+    5: 'VOTER ID',
 }
+//export const MODEL_CLASSES = {
+//    0: 'AADHAAR',
+//    1: 'DRIVING LICENSE',
+//    2: 'PAN',
+//    3: 'PASSPORT',
+//    4: 'VOTER ID',
+//}
