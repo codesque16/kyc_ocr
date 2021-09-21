@@ -21,6 +21,7 @@ import tensorAsBase64 from 'tensor-as-base64';
 
 //const MODEL_PATH = '/model/model.json';
 const MODEL_PATH = '/kyc_ocr/model/model.json';
+const MODEL_INFO_PATH = '/kyc_ocr/model/model_info.txt';
 const IMAGE_SIZE = 600;
 const CANVAS_SIZE = 600;
 const TOPK_PREDICTIONS = 5;
@@ -150,7 +151,7 @@ export default class Classify extends Component {
   }
 
   getModelInfo = async () => {
-    await fetch(`${config.API_ENDPOINT}/model_info`, {
+    await fetch(`${MODEL_INFO_PATH}`, {
       method: 'GET',
     })
     .then(async (response) => {
