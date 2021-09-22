@@ -41,12 +41,12 @@ class App extends Component {
         <div className="App">
           <Container>
             <Navbar collapseOnSelect className="app-nav-bar" variant="dark" expand="lg">
-              <Navbar.Brand href="/">KYC</Navbar.Brand>
+              <Navbar.Brand href="/kyc_ocr">KYC</Navbar.Brand>
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="">
-                  <Link className="nav-link" to="/">Classify</Link>
-                  <Link className="nav-link" to="/about">About</Link>
+                  <Link className="nav-link" to="/kyc_ocr/classify">Classify</Link>
+                  <Link className="nav-link" to="/kyc_ocr/about">About</Link>
                 </Nav>
               </Navbar.Collapse>
             </Navbar>
