@@ -6,6 +6,6 @@ import Classify from './pages/Classify';
 
 export default ({ childProps }) =>
   <Switch>
-    <Route path="/" exact component={Classify} props={childProps} />
-    <Route path="/about" exact component={About} props={childProps} />
+    <Route path="/kyc_ocr/classify" exact component={Classify} props={childProps} />
+    <Route path="/kyc_ocr/about" exact component={About} props={childProps} />
   </Switch>;

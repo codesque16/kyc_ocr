@@ -20,8 +20,9 @@ import tensorAsBase64 from 'tensor-as-base64';
 
 
 //const MODEL_PATH = '/model/model.json';
-const MODEL_PATH = 'https://codesque16.github.io/kyc_ocr/model/model_info.txt';
-const MODEL_INFO_PATH = '/kyc_ocr/model/model_info.txt';
+const MODEL_PATH = '/kyc_ocr/model/model.json';
+const MODEL_INFO_PATH = 'https://codesque16.github.io/kyc_ocr/model/model_info.txt';
+//const MODEL_INFO_PATH = '/kyc_ocr/model/model_info.txt';
 const IMAGE_SIZE = 600;
 const CANVAS_SIZE = 600;
 const TOPK_PREDICTIONS = 5;
@@ -151,12 +152,18 @@ export default class Classify extends Component {
   }
 
   getModelInfo = async () => {
+    //let fr=new FileReader();
+    //let last_updated=fr.readAsText(`${MODEL_INFO_PATH}`);
+    //this.modelLastUpdated = data.last_updated;
+
     await fetch(`${MODEL_INFO_PATH}`, {
       method: 'GET',
     })
     .then(async (response) => {
-      await response.json().then((data) => {
-        this.modelLastUpdated = data.last_updated;
+      await response.text().then((data) => {
+        //this.modelLastUpdated = data.last_updated;
+        console.log(data);
+        this.modelLastUpdated = data;
       })
       .catch((err) => {
         console.log('Unable to get parse model info.');
@@ -165,6 +172,7 @@ export default class Classify extends Component {
     .catch((err) => {
       console.log('Unable to get model info');
     });
+
   }
 
   updateModel = async () => {
